@@ -15,7 +15,7 @@ public class Main {
         String[] categories = new String[5];
         double[] pricesBefore = new double[5];
         double[] pricesAfter = new double[5];
-        double discountPercentage =0.0;
+        double discountPercentage;
         double totalBeforeDiscount = 0.0;
         double totalAfterDiscount = 0.0;
 
@@ -38,20 +38,12 @@ public class Main {
             }
 
             // Disc
-            switch(categories[i]){
-                case "novel":
-                    discountPercentage=0.10;
-                    break;
-                case "komik":
-                    discountPercentage=0.05;
-                    break;
-                case "ensiklopedia":
-                    discountPercentage=0.20;
-                    break;
-                default:
-                    discountPercentage=0.0;
-                    break;
-            }
+            discountPercentage = switch (categories[i]) {
+                case "novel" -> 0.10;
+                case "komik" -> 0.05;
+                case "ensiklopedia" -> 0.20;
+                default -> 0.0;
+            };
             pricesAfter[i] = pricesBefore[i] - (pricesBefore[i] * discountPercentage);
 
             // Add to totals
